@@ -12,7 +12,6 @@ public class Main {
         } else {
             throw new Exception("Неверное выражение");
         }
-
     }
 
 
@@ -70,7 +69,6 @@ public class Main {
 
 
     static int consider(int a, int b, String oper) {
-
         if (oper.equals("+")) return a + b;
         else if (oper.equals("-")) return a - b;
         else if (oper.equals("*")) return a * b;
@@ -101,14 +99,12 @@ class Roman {
             "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII",
             "XCVIII", "XCIX", "C"};
 
-
     public static boolean isRoman(String el) {
         for (int i = 0; i < romanNumber.length; i++) {
             if (el.contains(romanNumber[i])) {
                 return true;
             }
         }
-
         return false;
     }
 
