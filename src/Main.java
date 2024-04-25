@@ -101,7 +101,6 @@ class Roman {
             "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII",
             "XCVIII", "XCIX", "C"};
 
-
     public static boolean isRoman(String el) {
         for (int i = 0; i < romanNumber.length; i++) {
             if (el.contains(romanNumber[i])) {
