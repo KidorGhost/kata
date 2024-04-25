@@ -5,16 +5,17 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите ваш пример: ");
         String input = scanner.nextLine();
-        String operation = findOperation(input);
-        if (operation != null) {
-            int result = Integer.parseInt(calc(input));
-            System.out.println("Результат: " + result);
-        } else {
-            throw new Exception("Неверное выражение");
+        int count = countOperators(input);
+        if(count>1){
+            throw new Exception("Вы ввели не коректное выражение");
+        }
+        else {
+            System.out.println( calc(input));
         }
 
-    }
 
+
+    }
 
     static String calc(String input) throws Exception {
         String[] operation = {"+", "-", "/", "*"};
@@ -24,7 +25,6 @@ public class Main {
         int num2;
         String result;
         boolean isRoman;
-
         for (int i = 0; i < operation.length; i++) {
             if (input.contains(operation[i])) {
                 actionIndex = i;
@@ -58,16 +58,12 @@ public class Main {
             if (arabian <= 0) {
                 throw new Exception("Римское число должно быть больше нуля");
             }
-
             result = Roman.convertToRoman(arabian);
         } else {
-
             result = String.valueOf(arabian);
         }
-
         return result;
     }
-
 
     static int consider(int a, int b, String oper) {
 
@@ -78,13 +74,21 @@ public class Main {
     }
 
     static String findOperation(String expression) {
-        if (expression.matches(".*\\s[+\\-*/]\\s.*")) {
-            if (expression.contains("+") && !expression.contains("-")) return "+";
-            else if (expression.contains("-") && !expression.contains("*")) return "-";
-            else if (expression.contains("*") && !expression.contains("/")) return "*";
-            else if (expression.contains("/")) return "/";
+        if (expression.contains("+")) return "+";
+        else if (expression.contains("-")) return "-";
+        else if (expression.contains("*")) return "*";
+        else if (expression.contains("/")) return "/";
+        else return null;
+    }
+    public static int countOperators(String input) {
+        int count = 0;
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (c == '+' || c == '-' || c == '*' || c == '/') {
+                count++;
+            }
         }
-        return null;
+        return count;
     }
 }
 
