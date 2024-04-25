@@ -12,9 +12,6 @@ public class Main {
         else {
             System.out.println( calc(input));
         }
-
-
-
     }
 
     static String calc(String input) throws Exception {
