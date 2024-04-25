@@ -63,7 +63,6 @@ public class Main {
     }
 
     static int consider(int a, int b, String oper) {
-
         if (oper.equals("+")) return a + b;
         else if (oper.equals("-")) return a - b;
         else if (oper.equals("*")) return a * b;
@@ -109,7 +108,6 @@ class Roman {
                 return true;
             }
         }
-
         return false;
     }
 
