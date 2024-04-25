@@ -2,14 +2,19 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-
-        //  Converter converter = new Converter();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите ваш пример: ");
         String input = scanner.nextLine();
-        calc(input);
+        String operation = findOperation(input);
+        if (operation != null) {
+            int result = Integer.parseInt(calc(input));
+            System.out.println("Результат: " + result);
+        } else {
+            throw new Exception("Неверное выражение");
+        }
 
     }
+
 
     static String calc(String input) throws Exception {
         String[] operation = {"+", "-", "/", "*"};
@@ -73,11 +78,13 @@ public class Main {
     }
 
     static String findOperation(String expression) {
-        if (expression.contains("+")) return "+";
-        else if (expression.contains("-")) return "-";
-        else if (expression.contains("*")) return "*";
-        else if (expression.contains("/")) return "/";
-        else return null;
+        if (expression.matches(".*\\s[+\\-*/]\\s.*")) {
+            if (expression.contains("+") && !expression.contains("-")) return "+";
+            else if (expression.contains("-") && !expression.contains("*")) return "-";
+            else if (expression.contains("*") && !expression.contains("/")) return "*";
+            else if (expression.contains("/")) return "/";
+        }
+        return null;
     }
 }
 
